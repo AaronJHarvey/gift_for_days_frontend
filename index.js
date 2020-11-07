@@ -29,5 +29,12 @@ function getGifts(){
 
 function createFormHandler(e){
   e.preventDefault()
-  console.log(e);
+  const giftNameInput = document.querySelector('#input-gift-name').value
+  const giftStoreNameInput = document.querySelector('#input-store').value
+  const personId = parseInt(document.querySelector('#people').value)
+  postFetch(giftNameInput, giftStoreNameInput, personId)
+}
+
+function postFetch(name, store, person_id){
+  console.log((name, store, person_id)
 }
