@@ -32,9 +32,18 @@ function createFormHandler(e){
   const giftNameInput = document.querySelector('#input-gift-name').value
   const giftStoreNameInput = document.querySelector('#input-store').value
   const personId = parseInt(document.querySelector('#people').value)
-  postFetch(giftNameInput, giftStoreNameInput, personId)
+  postGift(giftNameInput, giftStoreNameInput, personId)
 }
 
-function postFetch(name, store, person_id){
-  console.log((name, store, person_id)
+function postGift(name, store, person_id){
+  let bodyData = {name,store,person_id}
+  fetch(endPoint,{
+    method:"POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(bodyData)
+  })
+  .then(resp => resp.json())
+  .then(data=>{
+    console.log(data)
+  })
 }
