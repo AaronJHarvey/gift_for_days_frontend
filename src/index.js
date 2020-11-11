@@ -13,12 +13,15 @@ function getGifts(){
   .then(response => response.json())
   .then(gifts =>{
     gifts.data.forEach(gift =>{
+
+      let newGift = new Gift(gift, gift.attributes)
+
       render(gift)
     })
   })
 }
 
-  function render(){
+  function render(gift){
     let giftMarkup = `
     <div data-id = ${gift.id}>
     <h3> ${gift.attributes.name}</h3>
@@ -48,13 +51,6 @@ function postFetch(name, store, person_id){
   .then(response =>response.json())
   .then(gift=>{
     const giftData = gift.data
-    let giftMarkup = `
-    <div data-id = ${gift.id}>
-    <h3> ${giftData.attributes.name}</h3>
-    <p> ${giftData.attributes.store}</p>
-    <p> ${giftData.attributes.person.name}</p>
-    <button data-id=${gift.id}>edit</button>
-    </div>`
-    document.querySelector('#gift-container').innerHTML +=giftMarkup
+    render(giftData)
   })
 }
