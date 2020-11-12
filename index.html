@@ -3,12 +3,38 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="src/gift.js"></script>
+    <script type="text/javascript" src="src/index.js"></script>
   </head>
   <body>
 
-    <div id="gift-container">
+    <div class="form-container">
 
+      <form id="create-gift-form" style="">
+        <h3> Create a Gift!!</h3>
+
+        <input id="input-name" type="text" name="gift_name" value
+        placeholder="Enter the gift name" class="input-text">
+        <br><br>
+        <input id='input-store' name='store' value
+        placeholder="Enter the store the gift can be found">
+        <br><br>
+      <p> Choose person </p>
+        <select id='people' name='people'>
+          <option value="1"> Mom</option>
+          <option value="2"> Alex</option>
+          <option value="3"> Melissa</option>
+        </select>
+        <br><br>
+            ##### Rebuild form in javascript####
+        <input id='create-button' type='submit' name='submit' value='Create New Gift'
+        class='submit'>
+      </form>
+
+
+</div>
+
+    <div id="gift-container">
     </div>
 
   </body>
