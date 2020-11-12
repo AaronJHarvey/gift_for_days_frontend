@@ -16,21 +16,12 @@ function getGifts(){
 
       let newGift = new Gift(gift, gift.attributes)
 
-      render(gift)
+      document.querySelector('#gift-container').innerHTML += newGift.renderGift()
+
     })
   })
 }
 
-  function render(gift){
-    let giftMarkup = `
-    <div data-id = ${gift.id}>
-    <h3> ${gift.attributes.name}</h3>
-    <p> ${gift.attributes.store}</p>
-    <p> ${gift.attributes.person.name}</p>
-    <button data-id=${gift.id}>edit</button>
-    </div>`
-    document.querySelector('#gift-container').innerHTML +=giftMarkup
-  }
 
 function createFormHandler(e){
   e.preventDefault()
@@ -51,6 +42,9 @@ function postFetch(name, store, person_id){
   .then(response =>response.json())
   .then(gift=>{
     const giftData = gift.data
-    render(giftData)
+    let newGift = new Gift(giftData, giftData.attributes)
+
+    document.querySelector('#gift-container').innerHTML += newGift.renderGift()
+
   })
 }
