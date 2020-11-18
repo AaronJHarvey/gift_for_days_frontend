@@ -14,9 +14,10 @@ class Gift {
     <div data-id = ${this.id}>
     <h3> ${this.name}</h3>
     <p> ${this.store}</p>
-    <p> ${this.person.name}</p>
-    <button data-id=${this.id}>edit</button>
-    </div>`
+    <p> for ${this.person.name}</p>
+    </div>
+    <br>`
+
   }
 
 }
