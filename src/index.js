@@ -2,10 +2,8 @@ const endPoint = 'http://localhost:3000/api/v1/gifts'
 
 document.addEventListener('DOMContentLoaded', () => {
   getGifts()
-
   const createGiftForm = document.querySelector('#create-gift-form')
-  createGiftForm.addEventListener("submit", (e) => createFormHandler(e) )
-})
+  createGiftForm.addEventListener("submit", (e) => createFormHandler(e))})
 
 
 function getGifts(){
@@ -17,7 +15,8 @@ function getGifts(){
       let newGift = new Gift(gift, gift.attributes)
 
       document.querySelector('#gift-container').innerHTML += newGift.renderGift()
-
+      const btns = document.querySelectorAll('button')
+      btns.forEach(btn=>{btn.addEventListener('click',event=>{console.log('clicked')})})
     })
   })
 }
@@ -45,6 +44,8 @@ function postFetch(name, store, person_id){
     let newGift = new Gift(giftData, giftData.attributes)
 
     document.querySelector('#gift-container').innerHTML += newGift.renderGift()
-
+    alert('success')
+    const btns = document.querySelectorAll('button')
+    btns.forEach(btn=>{btn.addEventListener('click',event=>{console.log('clicked')})})
   })
 }

@@ -15,10 +15,9 @@ class Gift {
     <h3> ${this.name}</h3>
     <p> ${this.store}</p>
     <p> ${this.person.name}</p>
-    <button data-id=${this.id}>edit</button>
+    <button id=${this.id}>edit</button>
     </div>`
   }
-
 }
 
 Gift.all = [];
