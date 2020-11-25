@@ -25,13 +25,45 @@ function getGifts(){
 function deleteGift(){
   giftId = event.target.id
   gifts = Gift.all
-  console.log(gifts.find(gift=>gift.id==giftId))
+  const giftToBeDeleted = gifts.find(gift=>gift.id==giftId)
+  document.querySelector('#gift-container').innerHTML = ""
   fetch(endPoint + giftId,{
     method:'DELETE',
     headers:{"Content-Type":"application/json"}
   })
-  .then(document.querySelector('#gift-container').innerHTML ="test" )
+.then(resp=>{
+  fetch(endPoint, {method:'GET'})
+  .then(resp=>resp.json())
+  .then(gifts=>{
+    gifts.data.forEach(gift=>{
+      let newGift = new Gift(gift, gift.attributes)
+      document.querySelector('#gift-container').innerHTML += newGift.renderGift()
+    })
+  })
+})}
+
+function renderGift(){
+ return `
+ <div data-id = ${this.id}>
+ <h3> ${this.name}</h3>
+ <p> ${this.store}</p>
+ <p> ${this.person.name}</p>
+ <button id=${this.id}>Delete</button>
+ </div>`
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function createFormHandler(e){
