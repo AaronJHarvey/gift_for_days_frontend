@@ -1,4 +1,4 @@
-const endPoint = 'http://localhost:3000/api/v1/gifts'
+const endPoint = 'http://localhost:3000/api/v1/gifts/'
 
 document.addEventListener('DOMContentLoaded', () => {
   getGifts()
@@ -15,10 +15,22 @@ function getGifts(){
       let newGift = new Gift(gift, gift.attributes)
 
       document.querySelector('#gift-container').innerHTML += newGift.renderGift()
+
       const btns = document.querySelectorAll('button')
-      btns.forEach(btn=>{btn.addEventListener('click',event=>{console.log('clicked')})})
+      btns.forEach(btn=> {btn.addEventListener('click',event=>{deleteGift()})})
     })
   })
+}
+
+function deleteGift(){
+  giftId = event.target.id
+  gifts = Gift.all
+  console.log(gifts.find(gift=>gift.id==giftId))
+  fetch(endPoint + giftId,{
+    method:'DELETE',
+    headers:{"Content-Type":"application/json"}
+  })
+  .then(document.querySelector('#gift-container').innerHTML = )
 }
 
 
@@ -46,6 +58,6 @@ function postFetch(name, store, person_id){
     document.querySelector('#gift-container').innerHTML += newGift.renderGift()
     alert('success')
     const btns = document.querySelectorAll('button')
-    btns.forEach(btn=>{btn.addEventListener('click',event=>{console.log('clicked')})})
+    btns.forEach(btn=>{btn.addEventListener('click',event=>{deleteGift()})})
   })
 }
