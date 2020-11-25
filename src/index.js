@@ -30,7 +30,7 @@ function deleteGift(){
     method:'DELETE',
     headers:{"Content-Type":"application/json"}
   })
-  .then(document.querySelector('#gift-container').innerHTML +="test" )
+  .then(document.querySelector('#gift-container').innerHTML ="test" )
 }
 
 
